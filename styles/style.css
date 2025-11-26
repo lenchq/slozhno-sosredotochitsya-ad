@@ -1,5 +1,356 @@
 /* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
 
+/* Components */
+
 .page {
-  /* сохраните в разметке и стилях класс page у тега body. Он удобен, чтобы составлять селекторы для разных цветовых тем. */
+  font-family: "IBM Plex mono", sans-serif;
+  font-size: 18px;
+  line-height: 23.4px;
+
+  background-position: center;
+  background-attachment: fixed;
+  background-image: var(--background-image-url);
+  background-size: auto 100vh;
+  min-height: 100vh;
+}
+.main {
+  padding: 40px 0;
+  @media (width >= 768px) {
+    padding: 60px 10px;
+  }
+
+  line-height: 23.4px;
+  display: flex;
+  flex-direction: column;
+  background: var(--background);
+}
+
+.header {
+  position: relative;
+  height: 100vh;
+}
+/* REC label */
+.page .decoration-recording {
+  position: absolute;
+
+  top: var(--header-offset);
+  right: calc(var(--header-offset) + 10px);
+
+  color: var(--decoration);
+  line-height: 25px;
+
+  &::after {
+    content: "";
+    display: inline-block;
+
+    width: 10px;
+    height: 10px;
+    border-radius: 9999px;
+
+    background: var(--decoration);
+    box-shadow: 0 0 4px 2px var(--decoration);
+  }
+}
+.header .header__theme-menu {
+  width: fit-content;
+
+  & > .header__theme-menu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px 10px;
+  }
+
+  @media (width >= 1024px) {
+    margin: auto;
+    padding-top: var(--header-offset);
+
+    & > .header__theme-menu-list {
+      flex-direction: row;
+    }
+  }
+  @media (768px <= width < 1024px) {
+    margin-left: auto;
+    padding-top: 25%;
+    padding-right: var(--header-offset);
+  }
+  @media (width < 768px) {
+    margin-left: auto;
+    padding: 0 10px;
+    padding-top: 75px;
+  }
+}
+
+.header__theme-menu-button {
+  background: none;
+  appearance: none;
+
+  cursor: pointer;
+  color: var(--button);
+
+  /* box-sizing: content-box; */
+
+  padding: 0 12px;
+  text-transform: lowercase;
+  outline: 1px solid transparent;
+  border: 1px solid transparent;
+
+  &.header__theme-menu-button_active {
+    outline: 1px solid var(--accent);
+  }
+
+  &:focus {
+    border-bottom: 1px solid var(--accent);
+  }
+  &:hover {
+    outline: 1px solid rgb(from var(--accent) r g b / 0.4);
+  }
+}
+.text-link {
+  color: var(--link-color);
+  text-shadow: 2px 2px var(--link-shadow-color);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+  &:focus {
+    outline-offset: 1px;
+    outline: 1px solid var(--foreground);
+  }
+}
+
+.header__content {
+  padding: 0 10px;
+}
+.header__heading {
+  @media (width < 768px) {
+    padding-left: 10px;
+  }
+
+  text-shadow: 4px 4px 0 var(--accent);
+  position: absolute;
+  transform: translateY(-50%);
+  top: 50%;
+  width: 100%;
+}
+.header__description {
+  @media (width >= 768px) {
+    width: 50%;
+  }
+  @media (width < 768px) {
+    left: var(--header-offset);
+  }
+
+  position: absolute;
+  top: 72.9%;
+  right: var(--header-offset);
+
+  font-size: 18px;
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+
+/* --- Layout Grid (Section Structure) --- */
+.section {
+  padding: 0 10px;
+  display: grid;
+  grid-template-columns: 1fr; /* Mobile default */
+  gap: 20px;
+  position: relative;
+
+  margin-bottom: 50px;
+  @media (width >= 768px) {
+    margin-bottom: 80px;
+  }
+}
+
+.section__title {
+  color: var(--accent);
+}
+.section__subtitle {
+  font-weight: bold;
+
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+}
+
+.article__title {
+  display: inline-block;
+  font-weight: bold;
+  margin-bottom: 10px;
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+  width: 100%;
+}
+.font-normal {
+  font-style: normal;
+}
+
+.text-block {
+  color: var(--foreground);
+}
+
+/* --- Content Layouts --- */
+
+/* Grid for content columns */
+.content-grid {
+  display: grid;
+  gap: 20px;
+}
+
+.content-grid_2-col {
+  grid-template-columns: 1fr;
+}
+
+.content-grid_3-col {
+  grid-template-columns: 1fr;
+}
+
+/* --- Gallery Grid --- */
+.gallery__section {
+  padding: 0 10px;
+  display: grid;
+  grid-template-columns: 1fr;
+  /* gap: 20px; */
+  position: relative;
+  /* margin-bottom: 50px; */
+}
+.gallery {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr;
+}
+
+.gallery__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* --- Footer --- */
+.footer {
+  text-align: center;
+  padding: 60px 20px;
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--secondary);
+  text-transform: lowercase;
+}
+
+/* --- HEADER STYLES (Provided by user context, added simple placeholders) --- */
+
+/* =========================================
+         MEDIA QUERIES (ADAPTIVITY)
+         ========================================= */
+
+/* Tablet (>= 768px) */
+@media (min-width: 768px) {
+  .section {
+    /* Title on the left, Content on the right */
+    grid-template-columns: 1fr 2fr;
+    align-items: start;
+  }
+
+  /* .content-grid_2-col {
+    grid-template-columns: 1fr 1fr;
+  } */
+
+  /* Gallery on Tablet/Desktop: Complex Grid */
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 200px; /* Base height for rows */
+    grid-template-areas:
+      "A A B"
+      "C D B"
+      "C F F";
+  }
+
+  .gallery__item_sunset {
+    grid-area: A;
+  }
+
+  .gallery__item_tape {
+    grid-area: B;
+  }
+
+  .gallery__item_books {
+    grid-area: C;
+  }
+
+  .gallery__item_street {
+    grid-area: D;
+  }
+
+  .gallery__item_icecream {
+    grid-area: F;
+  }
+}
+
+/* Desktop (>= 1024px) */
+@media (min-width: 1024px) {
+  .section {
+    grid-template-columns: 1fr 3fr; /* More space for content */
+  }
+
+  .content-grid_3-col {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .header__heading {
+    font-size: 5rem;
+  }
+}
+
+.footer {
+  height: 100vh;
+  position: relative;
+  display: flex;
+  place-items: center;
+  place-content: center;
+  background: var(--background);
+
+  text-shadow: 2px 2px 0 var(--accent);
+}
+
+.heading-text {
+  color: var(--secondary);
+  line-height: 0.83em;
+  @media (width <= 768px) {
+    font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  }
+  @media (width >= 768px) {
+    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  }
+}
+
+.camera-decorations {
+  &::after {
+    content: "";
+
+    position: absolute;
+    width: 25px;
+    height: 25px;
+
+    border: 1px solid var(--decoration);
+    border-top: 0;
+    border-right: 0;
+
+    bottom: var(--header-offset);
+    left: var(--header-offset);
+  }
+  &::before {
+    content: "";
+
+    position: absolute;
+    width: 25px;
+    height: 25px;
+
+    border: 1px solid var(--decoration);
+    border-bottom: 0;
+    border-left: 0;
+
+    top: var(--header-offset);
+    right: var(--header-offset);
+  }
 }

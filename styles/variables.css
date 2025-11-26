@@ -1,4 +1,8 @@
-/*
-  Переменные для вашего проекта
-  и их переопределение под различные устройства
-*/
+:root {
+  /* Based on figma design */
+
+  --header-offset: 10px;
+  @media (width >= 768px) {
+    --header-offset: 20px;
+  }
+}

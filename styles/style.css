@@ -87,8 +87,6 @@
   cursor: pointer;
   color: var(--button);
 
-  /* box-sizing: content-box; */
-
   padding: 0 12px;
   text-transform: lowercase;
   outline: 1px solid transparent;
@@ -150,11 +148,10 @@
   color: var(--accent-foreground);
 }
 
-/* --- Layout Grid (Section Structure) --- */
 .section {
   padding: 0 10px;
   display: grid;
-  grid-template-columns: 1fr; /* Mobile default */
+  grid-template-columns: 1fr;
   gap: 20px;
   position: relative;
 
@@ -190,9 +187,6 @@
   color: var(--foreground);
 }
 
-/* --- Content Layouts --- */
-
-/* Grid for content columns */
 .content-grid {
   display: grid;
   gap: 20px;
@@ -206,14 +200,11 @@
   grid-template-columns: 1fr;
 }
 
-/* --- Gallery Grid --- */
 .gallery__section {
   padding: 0 10px;
   display: grid;
   grid-template-columns: 1fr;
-  /* gap: 20px; */
   position: relative;
-  /* margin-bottom: 50px; */
 }
 .gallery {
   display: grid;
@@ -228,7 +219,6 @@
   display: block;
 }
 
-/* --- Footer --- */
 .footer {
   text-align: center;
   padding: 60px 20px;
@@ -238,28 +228,15 @@
   text-transform: lowercase;
 }
 
-/* --- HEADER STYLES (Provided by user context, added simple placeholders) --- */
-
-/* =========================================
-         MEDIA QUERIES (ADAPTIVITY)
-         ========================================= */
-
-/* Tablet (>= 768px) */
 @media (min-width: 768px) {
   .section {
-    /* Title on the left, Content on the right */
     grid-template-columns: 1fr 2fr;
     align-items: start;
   }
 
-  /* .content-grid_2-col {
-    grid-template-columns: 1fr 1fr;
-  } */
-
-  /* Gallery on Tablet/Desktop: Complex Grid */
   .gallery {
     grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 200px; /* Base height for rows */
+    grid-auto-rows: 200px; 
     grid-template-areas:
       "A A B"
       "C D B"
@@ -287,10 +264,9 @@
   }
 }
 
-/* Desktop (>= 1024px) */
 @media (min-width: 1024px) {
   .section {
-    grid-template-columns: 1fr 3fr; /* More space for content */
+    grid-template-columns: 1fr 3fr;
   }
 
   .content-grid_3-col {

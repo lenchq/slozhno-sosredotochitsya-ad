@@ -23,6 +23,19 @@
   --background-image-url: url("../images/cover-image-dark.png");
 }
 
-.theme-dark .page {
-  /* Вам также нужно будет написать ряд подобных селекторов */
+:root.theme-auto {
+  @media (prefers-color-scheme: dark) {
+    --background: #000028;
+    --foreground: #f1b2ce;
+    --accent: #ff0070;
+    --accent-foreground: #000028;
+    --button: var(--accent);
+    --link-color: var(--foreground);
+    --link-shadow-color: var(--accent);
+
+    --decoration: var(--accent);
+    --secondary: #db00ff;
+
+    --background-image-url: url("../images/cover-image-dark.png");
+  }
 }

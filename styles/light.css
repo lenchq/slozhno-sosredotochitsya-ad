@@ -24,6 +24,24 @@
   --background-image-url: url("../images/cover-image-light.png");
 }
 
+:root.theme-auto {
+  @media (prefers-color-scheme: light) {
+    --background: #fff1f7;
+    --foreground: #353430;
+    --accent: #ff8dcb;
+    --accent-foreground: var(--foreground);
+    --button: var(--foreground);
+    --link-color: var(--foreground);
+    --link-shadow-color: #f1b2ce;
+    --link-shadow: drop-shadow(2px 2px 0 var(--link-shadow-color));
+
+    --decoration: var(--foreground);
+    --secondary: #ffc2e6;
+
+    --background-image-url: url("../images/cover-image-light.png");
+  }
+}
+
 .theme-light .page {
   & .decoration-recording {
     display: none;

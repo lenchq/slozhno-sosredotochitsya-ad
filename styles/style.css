@@ -151,18 +151,19 @@
 }
 .header__description {
   position: absolute;
-  top: 72.9%;
+  top: calc(70% + 15px);
   right: var(--header-offset);
   font-size: 18px;
   background: var(--accent);
   color: var(--accent-foreground);
 
   @media (width >= 768px) {
-    width: 50%;
+    width: calc(50% - var(--header-offset));
+    top: calc(70% + 10px);
   }
   @media (width < 768px) {
     left: var(--header-offset);
-    right: auto;
+    right: var(--header-offset);
   }
 }
 .section {
@@ -186,7 +187,10 @@
 }
 .section__title {
   color: var(--accent);
-  width: 30vw;
+
+  @media (width >= 768px) {
+    width: 30vw;
+  }
 }
 .article__title {
   display: inline-block;
@@ -227,6 +231,22 @@
       "A A B"
       "C D B"
       "C F F";
+
+    & .gallery__item_sunset {
+      grid-area: A;
+    }
+    & .gallery__item_tape {
+      grid-area: B;
+    }
+    & .gallery__item_books {
+      grid-area: C;
+    }
+    & .gallery__item_street {
+      grid-area: D;
+    }
+    & .gallery__item_icecream {
+      grid-area: F;
+    }
   }
 }
 .gallery__image {
@@ -235,21 +255,7 @@
   object-fit: cover;
   display: block;
 }
-.gallery__item_sunset {
-  grid-area: A;
-}
-.gallery__item_tape {
-  grid-area: B;
-}
-.gallery__item_books {
-  grid-area: C;
-}
-.gallery__item_street {
-  grid-area: D;
-}
-.gallery__item_icecream {
-  grid-area: F;
-}
+
 .footer {
   height: 100vh;
   position: relative;
